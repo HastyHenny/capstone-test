@@ -1,5 +1,5 @@
 // Import function from Product Model
-import { showStudents, showStudentsById, createStudent, updateStudent, deleteStudent } from "../models/productModel.js";
+import { showStudents, showStudentsById, createStudent, updateStudent, deleteStudent } from "../models/studentModel.js";
   
 // Get All Students
 export const showStudents = (req, res) => {
