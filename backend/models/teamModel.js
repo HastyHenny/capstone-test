@@ -1,9 +1,9 @@
 // import connection
 import db from "../config/database.js";
   
-// Get All Products
+// Get All teams
 export const getTeams = (result) => {
-    db.query("SELECT * FROM product", (err, results) => {             
+    db.query("SELECT * FROM team", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -13,9 +13,9 @@ export const getTeams = (result) => {
     });   
 }
   
-// Get Single Product
+// Get Single team
 export const getTeamById = (id, result) => {
-    db.query("SELECT * FROM product WHERE product_id = ?", [id], (err, results) => {             
+    db.query("SELECT * FROM team WHERE team_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -25,9 +25,9 @@ export const getTeamById = (id, result) => {
     });   
 }
   
-// Insert Product to Database
+// Insert team to Database
 export const insertTeam = (data, result) => {
-    db.query("INSERT INTO product SET ?", [data], (err, results) => {             
+    db.query("INSERT INTO team SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -37,9 +37,9 @@ export const insertTeam = (data, result) => {
     });   
 }
   
-// Update Product to Database
+// Update team to Database
 export const updateTeamById = (data, id, result) => {
-    db.query("UPDATE product SET product_name = ?, product_price = ? WHERE product_id = ?", [data.product_name, data.product_price, id], (err, results) => {             
+    db.query("UPDATE team SET team_name = ? WHERE team_id = ?", [data.team_name, id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -49,9 +49,9 @@ export const updateTeamById = (data, id, result) => {
     });   
 }
   
-// Delete Product to Database
+// Delete team to Database
 export const deleteTeamById = (id, result) => {
-    db.query("DELETE FROM product WHERE product_id = ?", [id], (err, results) => {             
+    db.query("DELETE FROM team WHERE team_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

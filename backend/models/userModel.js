@@ -1,9 +1,9 @@
 // import connection
 import db from "../config/database.js";
   
-// Get All Products
+// Get All users
 export const getUsers = (result) => {
-    db.query("SELECT * FROM product", (err, results) => {             
+    db.query("SELECT * FROM admin", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -13,9 +13,9 @@ export const getUsers = (result) => {
     });   
 }
   
-// Get Single Product
+// Get Single user
 export const getUserById = (id, result) => {
-    db.query("SELECT * FROM product WHERE product_id = ?", [id], (err, results) => {             
+    db.query("SELECT * FROM user WHERE admin_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -25,9 +25,9 @@ export const getUserById = (id, result) => {
     });   
 }
   
-// Insert Product to Database
+// Insert user to Database
 export const insertUser = (data, result) => {
-    db.query("INSERT INTO product SET ?", [data], (err, results) => {             
+    db.query("INSERT INTO admin SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -37,9 +37,9 @@ export const insertUser = (data, result) => {
     });   
 }
   
-// Update Product to Database
+// Update user to Database
 export const updateUserById = (data, id, result) => {
-    db.query("UPDATE product SET product_name = ?, product_price = ? WHERE product_id = ?", [data.product_name, data.product_price, id], (err, results) => {             
+    db.query("UPDATE admin SET admin_fname = ?, admin_lname = ?, admin_email = ? WHERE user_id = ?", [data.admin_fname, data.admin_lname, data.admin_email, id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -49,9 +49,9 @@ export const updateUserById = (data, id, result) => {
     });   
 }
   
-// Delete Product to Database
+// Delete user to Database
 export const deleteUserById = (id, result) => {
-    db.query("DELETE FROM product WHERE product_id = ?", [id], (err, results) => {             
+    db.query("DELETE FROM admin WHERE admin_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

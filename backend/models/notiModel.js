@@ -3,7 +3,7 @@ import db from "../config/database.js";
   
 // Get All Products
 export const getNotis = (result) => {
-    db.query("SELECT * FROM product", (err, results) => {             
+    db.query("SELECT * FROM notifications", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -15,7 +15,7 @@ export const getNotis = (result) => {
   
 // Get Single Product
 export const getNotiById = (id, result) => {
-    db.query("SELECT * FROM product WHERE product_id = ?", [id], (err, results) => {             
+    db.query("SELECT * FROM notifications WHERE not_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -27,7 +27,7 @@ export const getNotiById = (id, result) => {
   
 // Insert Product to Database
 export const insertNoti = (data, result) => {
-    db.query("INSERT INTO product SET ?", [data], (err, results) => {             
+    db.query("INSERT INTO notifications SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -39,7 +39,7 @@ export const insertNoti = (data, result) => {
   
 // Update Product to Database
 export const updateNotiById = (data, id, result) => {
-    db.query("UPDATE product SET product_name = ?, product_price = ? WHERE product_id = ?", [data.product_name, data.product_price, id], (err, results) => {             
+    db.query("UPDATE notifications SET user_email = ?, not_date = ?, not_time = ? WHERE product_id = ?", [data.user_email, data.not_date, data.not_time, id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -51,7 +51,7 @@ export const updateNotiById = (data, id, result) => {
   
 // Delete Product to Database
 export const deleteNotiById = (id, result) => {
-    db.query("DELETE FROM product WHERE product_id = ?", [id], (err, results) => {             
+    db.query("DELETE FROM notifications WHERE not_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

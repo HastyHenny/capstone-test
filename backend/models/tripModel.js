@@ -1,9 +1,9 @@
 // import connection
 import db from "../config/database.js";
   
-// Get All Products
+// Get All trips
 export const getTrips = (result) => {
-    db.query("SELECT * FROM product", (err, results) => {             
+    db.query("SELECT * FROM trip", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -13,9 +13,9 @@ export const getTrips = (result) => {
     });   
 }
   
-// Get Single Product
+// Get Single trip
 export const getTripById = (id, result) => {
-    db.query("SELECT * FROM product WHERE product_id = ?", [id], (err, results) => {             
+    db.query("SELECT * FROM trip WHERE trip_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -25,9 +25,9 @@ export const getTripById = (id, result) => {
     });   
 }
   
-// Insert Product to Database
+// Insert trip to Database
 export const insertTrip = (data, result) => {
-    db.query("INSERT INTO product SET ?", [data], (err, results) => {             
+    db.query("INSERT INTO trip SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -37,9 +37,9 @@ export const insertTrip = (data, result) => {
     });   
 }
   
-// Update Product to Database
+// Update trip to Database
 export const updateTripById = (data, id, result) => {
-    db.query("UPDATE product SET product_name = ?, product_price = ? WHERE product_id = ?", [data.product_name, data.product_price, id], (err, results) => {             
+    db.query("UPDATE trip SET team_id = ?, trip_desc = ?, trip_departure = ?, trip_return = ? WHERE trip_id = ?", [data.team_id, data.trip_desc, data.trip_departure, data.trip_return, id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -49,9 +49,9 @@ export const updateTripById = (data, id, result) => {
     });   
 }
   
-// Delete Product to Database
+// Delete trip to Database
 export const deleteTripById = (id, result) => {
-    db.query("DELETE FROM product WHERE product_id = ?", [id], (err, results) => {             
+    db.query("DELETE FROM trip WHERE trip_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

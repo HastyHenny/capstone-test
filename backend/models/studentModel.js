@@ -1,9 +1,9 @@
 // import connection
 import db from "../config/database.js";
   
-// Get All Products
+// Get All students
 export const getStudents = (result) => {
-    db.query("SELECT * FROM product", (err, results) => {             
+    db.query("SELECT * FROM student", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -13,9 +13,9 @@ export const getStudents = (result) => {
     });   
 }
   
-// Get Single Product
+// Get Single student
 export const getStudentById = (id, result) => {
-    db.query("SELECT * FROM product WHERE product_id = ?", [id], (err, results) => {             
+    db.query("SELECT * FROM student WHERE student_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -25,9 +25,9 @@ export const getStudentById = (id, result) => {
     });   
 }
   
-// Insert Product to Database
+// Insert student to Database
 export const insertStudent = (data, result) => {
-    db.query("INSERT INTO product SET ?", [data], (err, results) => {             
+    db.query("INSERT INTO student SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -37,9 +37,9 @@ export const insertStudent = (data, result) => {
     });   
 }
   
-// Update Product to Database
+// Update student to Database
 export const updateStudentById = (data, id, result) => {
-    db.query("UPDATE product SET product_name = ?, product_price = ? WHERE product_id = ?", [data.product_name, data.product_price, id], (err, results) => {             
+    db.query("UPDATE student SET student_fname = ?, student_lname = ? WHERE student_id = ?", [data.student_fname, data.student_lname, id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -49,9 +49,9 @@ export const updateStudentById = (data, id, result) => {
     });   
 }
   
-// Delete Product to Database
+// Delete student to Database
 export const deleteStudentById = (id, result) => {
-    db.query("DELETE FROM product WHERE product_id = ?", [id], (err, results) => {             
+    db.query("DELETE FROM student WHERE student_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
