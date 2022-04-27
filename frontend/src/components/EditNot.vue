@@ -1,6 +1,6 @@
 <template>
   <div>
-     <div class="field">
+    <div class="field">
       <label class="label">Notification ID</label>
       <div class="control">
         <input
@@ -22,6 +22,7 @@
           v-model="userEmail"
         />
       </div>
+    </div>
 
     <div class="field">
       <label class="label">Date</label>
@@ -33,6 +34,7 @@
           v-model="notDate"
         />
       </div>
+    </div>
 
     <div class="field">
       <label class="label">Time</label>
@@ -45,9 +47,8 @@
         />
       </div>
     </div>
-  
     <div class="control">
-      <button class="button is-success" @click="saveProduct">SAVE</button>
+      <button class="button is-success" @click="updateProduct">UPDATE</button>
     </div>
   </div>
 </template>
@@ -57,7 +58,7 @@
 import axios from "axios";
   
 export default {
-  name: "AddProduct",
+  name: "EditNot",
   data() {
     return {
       notId: "",
@@ -66,16 +67,37 @@ export default {
       notTime: "",
     };
   },
+  created: function () {
+    this.getNotiById();
+  },
   methods: {
-    // Create New product
-    async saveProduct() {
+    // Get notification By Id
+    async getNotiById() {
       try {
-        await axios.post("http://localhost:5000/products", {
-          not_id: this.notId,
+        const response = await axios.get(
+          `http://localhost:5000/notification/${this.$route.params.id}`
+        );
+        this.notId = response.data.not_id;
+        this.userEmail = response.data.user_email;
+        this.notDate = response.data.not_date;
+        this.notTime = response.data.not_time;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  
+    // Update notification
+    async updateNoti() {
+      try {
+        await axios.put(
+          `http://localhost:5000/notification/${this.$route.params.id}`,
+          {
+            not_id: this.notId,
             user_email: this.userEmail,
             not_date: this.notDate,
             not_time: this.notTime,
-        });
+          }
+        );
         this.notId = "";
         this.userEmail = "";
         this.notDate = "";
